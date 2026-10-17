@@ -137,10 +137,31 @@
     <header>
         <h1>🏀 Liga de Básquetbol</h1>
 
-        <nav>
-            <a href="{{ route('equipos.index') }}">Equipos</a>
-            <a href="{{ route('equipos.create') }}">Registrar equipo</a>
-        </nav>
+        
+<nav>
+    @auth
+        <a href="{{ route('equipos.index') }}">Equipos</a>
+        <a href="{{ route('equipos.create') }}">Registrar equipo</a>
+        <a href="{{ route('jugadores.index') }}">Jugadores</a>
+        <a href="{{ route('partidos.index') }}">Partidos</a>
+
+        <span style="margin-right: 15px;">
+            Usuario: {{ Auth::user()->name }}
+        </span>
+
+        <form action="{{ route('logout') }}" method="POST"
+              style="display: inline;">
+            @csrf
+            <button type="submit" class="btn btn-secondary">
+                Cerrar sesión
+            </button>
+        </form>
+    @else
+        <a href="{{ route('login') }}">Iniciar sesión</a>
+        <a href="{{ route('register') }}">Crear cuenta</a>
+    @endauth
+</nav>
+
     </header>
 
     <main>
