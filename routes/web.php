@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EquipoController;
 use App\Http\Controllers\JugadorController;
 use App\Http\Controllers\PartidoController;
+use App\Http\Controllers\EstadisticaController;
 
 Route::redirect('/', '/equipos');
 
@@ -36,4 +37,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('partidos', PartidoController::class)
         ->except(['show']);
+
+    // Estadísticas y clasificación de la liga
+    Route::get('/estadisticas', [EstadisticaController::class, 'index'])
+        ->name('estadisticas.index');
 });

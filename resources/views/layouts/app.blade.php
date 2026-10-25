@@ -144,6 +144,8 @@
         <a href="{{ route('equipos.create') }}">Registrar equipo</a>
         <a href="{{ route('jugadores.index') }}">Jugadores</a>
         <a href="{{ route('partidos.index') }}">Partidos</a>
+        <a href="{{ route('estadisticas.index') }}">Estadísticas</a>
+
 
         <span style="margin-right: 15px;">
             Usuario: {{ Auth::user()->name }}
